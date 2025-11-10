@@ -8,7 +8,7 @@ const dragons = ref(dragonData);
 // 0.3. I main.js er routeren blevet importeret og anvendt i appen
 // 0.4. Der er opsat en mappe og en router deri: src/router/index.js. Den har jeg ryddet op i så vi selv kan tilføje
 
-// 1. Lad os lave en HomeView.vue der indeholder det vi normalt ville have inde i <main> - det der normalt ændrer sig fra url til url
+// 1. Lad os lave en HomeView.vue (eller Home.vue) der indeholder det vi normalt ville have inde i <main> - det der normalt ændrer sig fra url til url
 
 // 2. Lad os sørge for at registrere den i routeren
 
@@ -25,25 +25,27 @@ const dragons = ref(dragonData);
 //  - Send props igennem <router-view> og modtag dem med defineProps() ligesom vi lærte sidst. Dette er måske nemmere, men betyder reelt at vi sender disse data til ALLE de eventuelle undersider vi nogensinde kommer til at lave...
 //  - Næste gang kommer vi til at se på state management, som er en bedre måde at klare det på, men indtil da vælger vi en af ovenstående to metoder
 
-// 8. Lav nu en ny side/view: ContactView.vue og lav her noget kontakt-agtigt
+// 8. Lav nu en ny side/view: ContactView.vue (eller Contact.vue) og lav her noget kontakt-agtigt
 
 // 9. Tilføj den i router + i <nav> i App.vue. Virker det?
 
-// 10. Lad os prøve at lave et "SingleDragonView" som på sigt skal vise den første drage. Opret det nye view, registrér den i index.js/routeren og til sidst i App.vue i <nav>. Virker det?
+// 10. Gentagelse giver rutine...skal vi også lave About.vue?
 
-// 11. I SingleDragonView har vi, via props, adgang til alle drager, så lav en "udvidet" visning af den første drage (dragons[0]) med lidt mere info end i HomeView
+// 11. Lad os prøve at lave et "SingleDragonView" (eller SingleDragon.vue) som på sigt skal vise alle dragers detaljer. Opret det nye view(i første omgang lav bare en <h2> i <template>-området), registrér den i index.js/routeren med ruten: "/dragon/1" og til sidst i App.vue i <nav>. Virker det?
 
-// 12. Men...det er da lidt dumt at vi skal hardcode hver eneste drage...vi skal have gang i dynamisk routing. Se dagens video eller læs op på de her to steder: https://router.vuejs.org/guide/essentials/dynamic-matching.html & https://router.vuejs.org/guide/advanced/composition-api.html Prøv at se et eksempel på hvordan det kunne se ud: https://youtu.be/ZgDwze7ed1k
+// 12. I SingleDragonView har vi, via props, adgang til alle drager, så lav en "udvidet" visning af den første drage (dragons[0]) med lidt mere info end i HomeView
 
-// 12.1 Opdatér routeren så den sender alle url'er med /dragon/12 og /dragon/BLAH over til SingleDragonView
+// 13. Men...det er da lidt dumt at vi skal hardcode hver eneste drage...vi skal have gang i dynamisk routing. Se dagens video eller læs op på de her to steder: https://router.vuejs.org/guide/essentials/dynamic-matching.html & https://router.vuejs.org/guide/advanced/composition-api.html Prøv at se et eksempel på hvordan det kunne se ud: https://youtu.be/ZgDwze7ed1k
 
-// 12.2 I SingleDragonView skal vi nu fange id'et fra urlen og vise den rigtige drage - ikke bare den første som vi gjorde før
+// 13.1 Opdatér routeren så den sender alle url'er med /dragon/12 og /dragon/BLAH over til SingleDragonView
 
-// 12.3 Nu mangler vi bare at opdatere navigationen i App.vue - prøv det
+// 13.2 I SingleDragonView skal vi nu fange id'et fra urlen og vise den rigtige drage - ikke bare den første som vi gjorde før
 
-// 12.4 OBS! Virker din app til at hente den første drage, men virker IKKE når du skifter til den næste? Det har muligvis at gøre med din app henter den første drage når din component loades, men for at optimere koden loades din komponent kun EN gang. læs her og se hvordan watch() kan redde dagen: https://router.vuejs.org/guide/essentials/dynamic-matching.html#Reacting-to-Params-Changes 
+// 13.3 Nu mangler vi bare at opdatere navigationen i App.vue - prøv det
 
-// 12.5 Kan vi gøre det bedre? Er det en pæn navigation? Hvad med at de enkelte "dragon cards" i HomeView fungerer som links? Do it og slet de dumme 20 links i nav!
+// 13.4 OBS! Virker din app til at hente den første drage, men virker IKKE når du skifter til den næste? Det har muligvis at gøre med din app henter den første drage når din component loades, men for at optimere koden loades din komponent kun EN gang. læs her og se hvordan watch() kan redde dagen: https://router.vuejs.org/guide/essentials/dynamic-matching.html#Reacting-to-Params-Changes 
+
+// 13.5 Kan vi gøre det bedre? Er det en pæn navigation? Hvad med at de enkelte "dragon cards" i HomeView fungerer som links? Do it og slet de dumme 20 links i nav!
 </script>
 
 <template>
