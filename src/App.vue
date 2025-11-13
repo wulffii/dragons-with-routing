@@ -1,20 +1,12 @@
 <script setup>
 import {ref} from "vue";
 import dragonData from "@/assets/js/dragons.js";
+import { RouterLink } from "vue-router";
+import TheHeadere from "./components/TheHeadere.vue";
+
 const dragons = ref(dragonData);
-// 0. Inden vi starter så vær opmærksom på at følgende ting ER sket inden I arbejder videre med dette projekt:
-// 0.1. Der er opsat en ny vue app MED router
-// 0.2. Denne omfatter at der er installeret router - det kan ses i package.json
-// 0.3. I main.js er routeren blevet importeret og anvendt i appen
-// 0.4. Der er opsat en mappe og en router deri: src/router/index.js. Den har jeg ryddet op i så vi selv kan tilføje
 
-// 1. Lad os lave en HomeView.vue (eller Home.vue) der indeholder det vi normalt ville have inde i <main> - det der normalt ændrer sig fra url til url
 
-// 2. Lad os sørge for at registrere den i routeren
-
-// 3. Bliver den så vist i App.vue? Nej vel? Det er fordi vi ikke har indsat <router-view>, so go ahead og test det i browser efterfølgende. Wrap din <router-view> i en <main>
-
-// 4. Så nu virker din route: localhost:5174 og localhost:5174/ - men hvad nu hvis man skriver localhost:5174/SKO ? Læs her og opsæt en 404/catch all side: https://router.vuejs.org/guide/essentials/dynamic-matching.html
 
 // 5. Kunne det ikke være smart hvis man kunne se linket til forsiden? Lad os i App.vue lave en <nav> med et <router-link> i der peger på "/"
 
@@ -49,37 +41,19 @@ const dragons = ref(dragonData);
 </script>
 
 <template>
-  <header>
-    <h1>D&D website</h1>
-    <h2>
-      Your source for DnD dragons. Providing dragon information since 2021.<br />
-      Find info about <span>20</span> dragons here.
-    </h2>
-  </header>
+<TheHeadere />
   <nav>
-    <!-- Links til ting her! -->
+    <RouterLink to="/">Hjem</RouterLink>
+    <RouterLink to="/contact">Kontakt</RouterLink>
+    <RouterLink to="/about">Omkring os</RouterLink>
   </nav>
-  <main><!-- Her skal vi vise vores "undersider" --></main>
+  <main>
+    <RouterView :dragons="dragons" />
+    </main>
 </template>
 
 <style scoped>
-header {
-  text-align: center;
-  min-height: 60vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)), url("@/assets/img/bg_dragon.jpg");
-  background-size: cover;
-  display: grid;
-  place-content: center;
-  color: white;
-}
 
-h1 {
-  font-size: 4rem;
-}
-
-span {
-  color: crimson;
-}
 
 main {
   max-width: 1000px;
